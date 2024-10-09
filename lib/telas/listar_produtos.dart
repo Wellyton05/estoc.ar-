@@ -44,12 +44,20 @@ class _ListarProdutosState extends State<ListarProdutos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('LISTAR PRODUTOS'),
+        title: Text('PRODUTOS'),
+        titleTextStyle: TextStyle(
+            color: Colors.white, 
+            fontSize: 20, 
+        ),
+        iconTheme: IconThemeData(
+          color: Colors.white, // Define a cor do botão de voltar como branco
+        ),
+        backgroundColor: Color(0xFF015299),
         actions: [
           IconButton(
             icon: Icon(
               Icons.person,
-              color: Color.fromARGB(255, 1, 82, 153),
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
             onPressed: () {
               print('Ícone de usuário clicado');
@@ -88,6 +96,9 @@ class _ListarProdutosState extends State<ListarProdutos> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.white, // Cor dos ícones selecionados em branco
+        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        backgroundColor: Color(0xFF015299),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
