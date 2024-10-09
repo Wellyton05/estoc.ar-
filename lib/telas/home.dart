@@ -5,43 +5,41 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-       home: Scaffold(
-        appBar: AppBar(
-          title: Text('HOME'),
-          actions: [
-            IconButton(
-              icon: Icon(
-                Icons.person,
-                color: Color.fromARGB(255, 1, 82, 153),
-              ),
-              onPressed: () {
-                print('Ícone de usuário clicado');
-              },
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('HOME'),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.person,
+              color: Color.fromARGB(255, 1, 82, 153),
             ),
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: GridView.count(
-            crossAxisCount: 2, // 2 colunas
-            crossAxisSpacing: 10, // Espaçamento horizontal
-            mainAxisSpacing: 10, // Espaçamento vertical
-            children: [
-              _buildSquareButton('CADASTRO PRODUTO', () {
-                print('Botão 1 clicado');
-              }),
-              _buildSquareButton('CADASTRO ESTOQUE', () {
-                print('Botão 2 clicado');
-              }),
-              _buildSquareButton('REALIZAR MOVIMENTAÇÃO', () {
-                print('Botão 3 clicado');
-              }),
-              _buildSquareButton('CONSULTAR MOVIMENTAÇÃO', () {
-                print('Botão 4 clicado');
-              }),
-            ],
+            onPressed: () {
+              print('Ícone de usuário clicado');
+            },
           ),
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView.count(
+          crossAxisCount: 2, // 2 colunas
+          crossAxisSpacing: 10, // Espaçamento horizontal
+          mainAxisSpacing: 10, // Espaçamento vertical
+          children: [
+            _buildSquareButton('CADASTRO PRODUTO', () {
+              print('Botão 1 clicado');
+            }),
+            _buildSquareButton('CADASTRO ESTOQUE', () {
+              print('Botão 2 clicado');
+            }),
+            _buildSquareButton('REALIZAR MOVIMENTAÇÃO', () {
+              print('Botão 3 clicado');
+            }),
+            _buildSquareButton('CONSULTAR MOVIMENTAÇÃO', () {
+              Navigator.pushNamed(context, '/listar_produtos'); // Navega para ListarProdutos
+            }),
+          ],
         ),
       ),
     );
@@ -54,15 +52,15 @@ class Home extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Color.fromARGB(255, 1, 82, 153), // Fundo azul
-          shape: RoundedRectangleBorder(
+          backgroundColor: const Color.fromARGB(255, 1, 82, 153), // Fundo azul
+          shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.zero, // Remove a curvatura do botão
           ),
           padding: EdgeInsets.zero, // Remove o padding padrão do botão
         ),
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.white, // Cor do texto
           ),
         ),
