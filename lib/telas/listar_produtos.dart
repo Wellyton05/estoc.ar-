@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'editar_produto.dart'; // Importa o arquivo de edição do produto
 
 class ListarProdutos extends StatefulWidget {
   const ListarProdutos({super.key});
@@ -45,9 +46,10 @@ class _ListarProdutosState extends State<ListarProdutos> {
     return Scaffold(
       appBar: AppBar(
         title: Text('PRODUTOS'),
+        centerTitle: true,
         titleTextStyle: TextStyle(
-            color: Colors.white, 
-            fontSize: 20, 
+          color: Colors.white,
+          fontSize: 20,
         ),
         iconTheme: IconThemeData(
           color: Colors.white, // Define a cor do botão de voltar como branco
@@ -87,7 +89,15 @@ class _ListarProdutosState extends State<ListarProdutos> {
                 return ListTile(
                   title: Text(produtosFiltrados[index]),
                   onTap: () {
-                    print('Produto ${produtosFiltrados[index]} selecionado');
+                    // Navegar para a tela de editar produto
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditarProduto(
+                          produto: produtosFiltrados[index],
+                        ),
+                      ),
+                    );
                   },
                 );
               },
@@ -96,7 +106,8 @@ class _ListarProdutosState extends State<ListarProdutos> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.white, // Cor dos ícones selecionados em branco
+        selectedItemColor:
+            Colors.white, // Cor dos ícones selecionados em branco
         unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
         backgroundColor: Color(0xFF015299),
         items: const [
