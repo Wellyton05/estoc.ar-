@@ -8,6 +8,7 @@ class Home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('HOME'),
+        centerTitle: true,
         actions: [
           IconButton(
             icon: const Icon(
@@ -28,7 +29,7 @@ class Home extends StatelessWidget {
           mainAxisSpacing: 10, // Espaçamento vertical
           children: [
             _buildSquareButton('CADASTRO PRODUTO', () {
-              print('Botão 1 clicado');
+              Navigator.pushNamed(context, '/listar_produtos'); // Navega para ListarProdutos
             }),
             _buildSquareButton('CADASTRO ESTOQUE', () {
               print('Botão 2 clicado');
@@ -37,7 +38,7 @@ class Home extends StatelessWidget {
               print('Botão 3 clicado');
             }),
             _buildSquareButton('CONSULTAR MOVIMENTAÇÃO', () {
-              Navigator.pushNamed(context, '/listar_produtos'); // Navega para ListarProdutos
+              print('Botão 4 clicado');
             }),
           ],
         ),

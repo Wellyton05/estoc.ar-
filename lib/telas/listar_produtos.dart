@@ -45,6 +45,7 @@ class _ListarProdutosState extends State<ListarProdutos> {
     return Scaffold(
       appBar: AppBar(
         title: Text('PRODUTOS'),
+        centerTitle: true,
         titleTextStyle: TextStyle(
             color: Colors.white, 
             fontSize: 20, 
