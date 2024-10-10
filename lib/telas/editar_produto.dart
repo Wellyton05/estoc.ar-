@@ -42,7 +42,7 @@ class EditarProduto extends StatelessWidget {
         selectedItemColor:
             Colors.white, // Cor dos ícones selecionados em branco
         unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
-        backgroundColor: Color(0xFF015299),
+        backgroundColor: Color.fromARGB(255, 4, 57, 89),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
