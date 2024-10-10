@@ -38,6 +38,29 @@ class EditarProduto extends StatelessWidget {
           style: TextStyle(fontSize: 20),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor:
+            Colors.white, // Cor dos ícones selecionados em branco
+        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        backgroundColor: Color(0xFF015299),
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Pesquisar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Adicionar',
+          ),
+        ],
+        onTap: (index) {
+          if (index == 0) {
+            print('Botão de pesquisar clicado');
+          } else if (index == 1) {
+            print('Botão de adicionar clicado');
+          }
+        },
+      ),
     );
   }
 }
