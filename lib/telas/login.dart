@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto1/telas/home.dart';
+//import 'package:projeto1/telas/home.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
