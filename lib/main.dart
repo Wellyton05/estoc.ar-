@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telas_app/telas/listar_estoques.dart';
 import 'package:telas_app/telas/home.dart';
 import 'package:telas_app/telas/listar_produtos.dart';
 import 'package:telas_app/telas/login.dart'; // Importe a nova tela
@@ -12,14 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       //home: const Home(), // Tela inicial
       debugShowCheckedModeBanner: false,
-      home: const Login(),
-      routes: {
-        '/listar_produtos': (context) =>
-            const ListarProdutos(), // Rota para ListarProdutos
-      },
+      home: Login(),
+      routes: {},
     );
   }
 }

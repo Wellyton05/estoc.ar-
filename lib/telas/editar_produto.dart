@@ -18,7 +18,7 @@ class EditarProduto extends StatelessWidget {
         iconTheme: IconThemeData(
           color: Colors.white, // Define a cor do botão de voltar como branco
         ),
-        backgroundColor: Color(0xFF015299),
+        backgroundColor: Color.fromARGB(255, 4, 57, 89),
         centerTitle: true,
         actions: [
           IconButton(

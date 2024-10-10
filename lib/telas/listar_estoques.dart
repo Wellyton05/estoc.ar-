@@ -1,31 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:telas_app/telas/home.dart';
-import 'package:telas_app/util/util.dart';
-import 'editar_produto.dart'; // Importa o arquivo de edição do produto
+//import 'editar_estoque.dart'; // Importa o arquivo de edição do estoque
 
-class ListarProdutos extends StatefulWidget {
-  const ListarProdutos({super.key});
+class ListarEstoques extends StatefulWidget {
+  const ListarEstoques({super.key});
 
   @override
-  _ListarProdutosState createState() => _ListarProdutosState();
+  _ListarEstoquesState createState() => _ListarEstoquesState();
 }
 
-class _ListarProdutosState extends State<ListarProdutos> {
+class _ListarEstoquesState extends State<ListarEstoques> {
   final TextEditingController _searchController = TextEditingController();
-  List<String> produtos = [
-    'Produto 1',
-    'Produto 2',
-    'Produto 3',
-    'Produto 4',
-    'Produto 5'
-  ]; // Lista de produtos
-  List<String> produtosFiltrados = []; // Lista para os produtos filtrados
+  List<String> estoques = [
+    'Estoque 1',
+    'Estoque 2',
+    'Estoque 3',
+    'Estoque 4',
+    'Estoque 5'
+  ]; // Lista de estoques
+  List<String> estoquesFiltrados = []; // Lista para os estoques filtrados
 
   @override
   void initState() {
     super.initState();
-    produtosFiltrados = produtos; // Inicia com todos os produtos
-    _searchController.addListener(_filterProdutos); // Filtra conforme digita
+    estoquesFiltrados = estoques; // Inicia com todos os estoques
+    _searchController.addListener(_filterestoques); // Filtra conforme digita
   }
 
   @override
@@ -34,11 +32,11 @@ class _ListarProdutosState extends State<ListarProdutos> {
     super.dispose();
   }
 
-  void _filterProdutos() {
+  void _filterestoques() {
     String query = _searchController.text.toLowerCase();
     setState(() {
-      produtosFiltrados = produtos.where((produto) {
-        return produto.toLowerCase().contains(query);
+      estoquesFiltrados = estoques.where((estoque) {
+        return estoque.toLowerCase().contains(query);
       }).toList();
     });
   }
@@ -47,7 +45,7 @@ class _ListarProdutosState extends State<ListarProdutos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Produtos'),
+        title: Text('Estoque'),
         centerTitle: true,
         titleTextStyle: TextStyle(
           color: Colors.white,
@@ -76,7 +74,7 @@ class _ListarProdutosState extends State<ListarProdutos> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: 'Pesquisar produto...',
+                hintText: 'Pesquisar estoque...',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
@@ -86,20 +84,20 @@ class _ListarProdutosState extends State<ListarProdutos> {
           ),
           Expanded(
             child: ListView.builder(
-              itemCount: produtosFiltrados.length,
+              itemCount: estoquesFiltrados.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(produtosFiltrados[index]),
+                  title: Text(estoquesFiltrados[index]),
                   onTap: () {
-                    // Navegar para a tela de editar produto
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EditarProduto(
-                          produto: produtosFiltrados[index],
-                        ),
-                      ),
-                    );
+                    // Navegar para a tela de editar estoque
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => EditarEstoque(
+                    //       estoque: estoquesFiltrados[index],
+                    //     ),
+                    //   ),
+                    // );
                   },
                 );
               },
