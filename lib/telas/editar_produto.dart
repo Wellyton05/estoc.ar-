@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'listar_produtos.dart';
+import 'adicionar_produto.dart';
 class EditarProduto extends StatelessWidget {
   final String produto;
 
@@ -55,9 +56,19 @@ class EditarProduto extends StatelessWidget {
         ],
         onTap: (index) {
           if (index == 0) {
-            print('Botão de pesquisar clicado');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ListarProdutos(), // Tela de adicionar produto
+              ),
+            );
           } else if (index == 1) {
-            print('Botão de adicionar clicado');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AdicionarProduto(), // Tela de adicionar produto
+              ),
+            );
           }
         },
       ),

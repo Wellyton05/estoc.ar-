@@ -91,13 +91,13 @@ class _ListarEstoquesState extends State<ListarEstoques> {
                   title: Text(estoquesFiltrados[index]),
                   onTap: () {
                     //Navegar para a tela de editar estoque
-                  Navigator.push(
-                     context,
-                     MaterialPageRoute(
-                       builder: (context) => EditarEstoque(
-                         estoque: estoquesFiltrados[index],
-                       ),
-                     ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => EditarEstoque(
+                          estoque: estoquesFiltrados[index],
+                        ),
+                      ),
                     );
                   },
                 );
@@ -123,12 +123,19 @@ class _ListarEstoquesState extends State<ListarEstoques> {
         ],
         onTap: (index) {
           if (index == 0) {
-            print('Botão de pesquisar clicado');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    const ListarEstoques(), // Tela de adicionar produto
+              ),
+            );
           } else if (index == 1) {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AdicionarEstoque(), // Tela de adicionar produto
+                builder: (context) =>
+                    const AdicionarEstoque(), // Tela de adicionar produto
               ),
             );
           }

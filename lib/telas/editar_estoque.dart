@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'adicionar_estoque.dart';
+import 'listar_estoques.dart';
 
 class EditarEstoque extends StatelessWidget {
    final String estoque;
@@ -123,7 +124,13 @@ class EditarEstoque extends StatelessWidget {
         ],
         onTap: (index) {
           if (index == 0) {
-            print('Botão de pesquisar clicado');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                    const ListarEstoques(), // Tela de adicionar produto
+              ),
+            );
           } else if (index == 1) {
             // Navegar para a tela de adicionar estoque
             Navigator.push(

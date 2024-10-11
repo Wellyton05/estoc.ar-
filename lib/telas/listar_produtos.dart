@@ -125,7 +125,12 @@ class _ListarProdutosState extends State<ListarProdutos> {
         ],
         onTap: (index) {
           if (index == 0) {
-            print('Botão de pesquisar clicado');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ListarProdutos(), // Tela de adicionar produto
+              ),
+            );
           } else if (index == 1) {
             // Navegar para a tela de adicionar produto
             Navigator.push(
