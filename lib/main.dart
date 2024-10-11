@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:telas_app/telas/login.dart'; // Importe a nova tela
-//import 'package:telas_app/telas/listar_estoques.dart';
-//import 'package:telas_app/telas/home.dart';
-//import 'package:telas_app/telas/listar_produtos.dart';
-
 
 void main() {
   runApp(const MyApp());

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-//import 'package:telas_app/telas/home.dart';
-//import 'package:telas_app/util/util.dart';
 import 'editar_produto.dart'; // Importa o arquivo de edição do produto
 import 'adicionar_produto.dart'; // Importa o arquivo de adicionar produto
 
@@ -13,14 +11,37 @@ class ListarProdutos extends StatefulWidget {
 
 class _ListarProdutosState extends State<ListarProdutos> {
   final TextEditingController _searchController = TextEditingController();
-  List<String> produtos = [
-    'Produto 1',
-    'Produto 2',
-    'Produto 3',
-    'Produto 4',
-    'Produto 5'
-  ]; // Lista de produtos
-  List<String> produtosFiltrados = []; // Lista para os produtos filtrados
+  
+  // Atualizando a lista para incluir imagem e custo de cada produto
+  final List<Map<String, dynamic>> produtos = [
+    {
+      'nome': 'Produto 1',
+      'imagem': 'assets/images/perfume.png', 
+      'custo': 19.99
+    },
+    {
+      'nome': 'Produto 2',
+      'imagem': 'assets/images/perfume.png',
+      'custo': 29.99
+    },
+    {
+      'nome': 'Produto 3',
+      'imagem': 'assets/images/perfume.png',
+      'custo': 9.99
+    },
+    {
+      'nome': 'Produto 4',
+      'imagem': 'assets/images/perfume.png',
+      'custo': 39.99
+    },
+    {
+      'nome': 'Produto 5',
+      'imagem': 'assets/perfume.png',
+      'custo': 49.99
+    },
+  ]; // Lista de produtos com imagem e custo
+  
+  List<Map<String, dynamic>> produtosFiltrados = []; // Lista para os produtos filtrados
 
   @override
   void initState() {
@@ -39,7 +60,7 @@ class _ListarProdutosState extends State<ListarProdutos> {
     String query = _searchController.text.toLowerCase();
     setState(() {
       produtosFiltrados = produtos.where((produto) {
-        return produto.toLowerCase().contains(query);
+        return produto['nome'].toLowerCase().contains(query);
       }).toList();
     });
   }
@@ -89,15 +110,26 @@ class _ListarProdutosState extends State<ListarProdutos> {
             child: ListView.builder(
               itemCount: produtosFiltrados.length,
               itemBuilder: (context, index) {
+                final produto = produtosFiltrados[index];
                 return ListTile(
-                  title: Text(produtosFiltrados[index]),
+                  title: Text(produto['nome']),
+                  subtitle: Text(
+                    'R\$ ${produto['custo'].toStringAsFixed(2)}', // Exibe o custo
+                    style: const TextStyle(fontSize: 14), // Texto menor
+                  ),
+                  leading: Image.asset(
+                    produto['imagem'], // Exibe a imagem do produto
+                    width: 50, // Defina o tamanho da imagem
+                    height: 50,
+                    fit: BoxFit.cover,
+                  ),
                   onTap: () {
                     // Navegar para a tela de editar produto
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) => EditarProduto(
-                          produto: produtosFiltrados[index],
+                          produto: produto['nome'],
                         ),
                       ),
                     );

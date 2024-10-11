@@ -9,7 +9,6 @@ class AdicionarEstoque extends StatelessWidget {
     // Controladores de texto para os campos (não implementam lógica)
     final TextEditingController nomeController = TextEditingController();
     final TextEditingController descricaoController = TextEditingController();
-    final TextEditingController custoController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(

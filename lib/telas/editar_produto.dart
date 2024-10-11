@@ -10,7 +10,6 @@ class EditarProduto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final TextEditingController nomeController = TextEditingController();
     final TextEditingController descricaoController = TextEditingController();
     final TextEditingController custoController = TextEditingController();
 

@@ -53,7 +53,7 @@ class AdicionarProduto extends StatelessWidget {
               // Campo para descrição do produto (maior)
               TextField(
                 controller: descricaoController,
-                maxLines: 3,
+                maxLines: 5,
                 decoration: const InputDecoration(
                   labelText: 'Descrição do Produto',
                   border: OutlineInputBorder(),
