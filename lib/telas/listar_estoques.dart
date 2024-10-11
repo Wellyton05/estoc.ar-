@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'adicionar_estoque.dart';
-//import 'editar_estoque.dart'; // Importa o arquivo de edição do estoque
+import 'editar_estoque.dart'; // Importa o arquivo de edição do estoque
 
 class ListarEstoques extends StatefulWidget {
   const ListarEstoques({super.key});
@@ -90,15 +90,15 @@ class _ListarEstoquesState extends State<ListarEstoques> {
                 return ListTile(
                   title: Text(estoquesFiltrados[index]),
                   onTap: () {
-                    // Navegar para a tela de editar estoque
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => EditarEstoque(
-                    //       estoque: estoquesFiltrados[index],
-                    //     ),
-                    //   ),
-                    // );
+                    //Navegar para a tela de editar estoque
+                  Navigator.push(
+                     context,
+                     MaterialPageRoute(
+                       builder: (context) => EditarEstoque(
+                         estoque: estoquesFiltrados[index],
+                       ),
+                     ),
+                    );
                   },
                 );
               },
