@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'adicionar_estoque.dart';
 //import 'editar_estoque.dart'; // Importa o arquivo de edição do estoque
 
 class ListarEstoques extends StatefulWidget {
@@ -124,7 +125,12 @@ class _ListarEstoquesState extends State<ListarEstoques> {
           if (index == 0) {
             print('Botão de pesquisar clicado');
           } else if (index == 1) {
-            print('Botão de adicionar clicado');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AdicionarEstoque(), // Tela de adicionar produto
+              ),
+            );
           }
         },
       ),

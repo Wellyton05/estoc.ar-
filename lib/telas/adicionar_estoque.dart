@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class AdicionarProduto extends StatelessWidget {
-  const AdicionarProduto({super.key});
+class AdicionarEstoque extends StatelessWidget {
+  const AdicionarEstoque({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Controladores de texto para os campos (não implementam lógica)
-    final TextEditingController nomeController = TextEditingController();
+    // Controladores de texto para os campos
     final TextEditingController descricaoController = TextEditingController();
-    final TextEditingController custoController = TextEditingController();
+    final TextEditingController localizacaoController = TextEditingController();
+    bool isAtivado = true; // Variável para controlar a situação do estoque
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Adicionar Produto'),
+        title: const Text('Adicionar Estoque'),
         centerTitle: true,
         titleTextStyle: const TextStyle(
           color: Colors.white,
@@ -40,50 +40,41 @@ class AdicionarProduto extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Campo para nome do produto
-              TextField(
-                controller: nomeController,
-                decoration: const InputDecoration(
-                  labelText: 'Nome do Produto',
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              // Campo para descrição do produto (maior)
+              // Campo para descrição do estoque
               TextField(
                 controller: descricaoController,
                 maxLines: 3,
                 decoration: const InputDecoration(
-                  labelText: 'Descrição do Produto',
+                  labelText: 'Descrição do Estoque',
                   border: OutlineInputBorder(),
                 ),
               ),
               const SizedBox(height: 16),
 
-              // Botão para adicionar imagem
-              ElevatedButton.icon(
-                onPressed: () {
-                  // Lógica para adicionar imagem seria implementada aqui
-                  print('Adicionar imagem');
-                },
-                icon: const Icon(Icons.image),
-                label: const Text('Adicionar Imagem'),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 4, 57, 89),
-                  foregroundColor: Colors.white,
-                ),
-              ),
-              const SizedBox(height: 16),
-
-              // Campo para o custo do produto
+              // Campo para localização do estoque
               TextField(
-                controller: custoController,
-                keyboardType: TextInputType.number,
+                controller: localizacaoController,
                 decoration: const InputDecoration(
-                  labelText: 'Custo do Produto',
+                  labelText: 'Localização do Estoque',
                   border: OutlineInputBorder(),
                 ),
+              ),
+              const SizedBox(height: 16),
+
+              // Campo para situação do estoque (Ativado/Desativado)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Situação do Estoque'),
+                  Switch(
+                    value: isAtivado,
+                    onChanged: (value) {
+                      // Atualiza a situação do estoque
+                      isAtivado = value;
+                      print(isAtivado ? 'Estoque ativado' : 'Estoque desativado');
+                    },
+                  ),
+                ],
               ),
               const SizedBox(height: 32),
 
@@ -92,10 +83,10 @@ class AdicionarProduto extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     // Simulação de navegação ou ação ao clicar no botão
-                    print('Produto registrado');
+                    print('Estoque registrado');
                     Navigator.pop(context); // Retorna à tela anterior
                   },
-                  child: const Text('Registrar Produto'),
+                  child: const Text('Registrar Estoque'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 4, 57, 89),
                     foregroundColor: Colors.white,
@@ -131,11 +122,11 @@ class AdicionarProduto extends StatelessWidget {
           if (index == 0) {
             print('Botão de pesquisar clicado');
           } else if (index == 1) {
-            // Navegar para a tela de adicionar produto
+            // Navegar para a tela de adicionar estoque
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AdicionarProduto(), // Tela de adicionar produto
+                builder: (context) => const AdicionarEstoque(), // Tela de adicionar estoque
               ),
             );
           }

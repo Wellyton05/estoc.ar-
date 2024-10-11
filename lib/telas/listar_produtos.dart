@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:telas_app/telas/home.dart';
-import 'package:telas_app/util/util.dart';
+//import 'package:telas_app/telas/home.dart';
+//import 'package:telas_app/util/util.dart';
 import 'editar_produto.dart'; // Importa o arquivo de edição do produto
 import 'adicionar_produto.dart'; // Importa o arquivo de adicionar produto
 
