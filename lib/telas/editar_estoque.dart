@@ -47,9 +47,9 @@ class EditarEstoque extends StatelessWidget {
               // Campo para descrição do estoque
               TextField(
                 controller: descricaoController,
-                maxLines: 3,
+                maxLines: 5,
                 decoration: const InputDecoration(
-                  labelText: 'Descrição do Estoque',
+                  labelText: 'Editar Descrição',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -59,7 +59,7 @@ class EditarEstoque extends StatelessWidget {
               TextField(
                 controller: localizacaoController,
                 decoration: const InputDecoration(
-                  labelText: 'Localização do Estoque',
+                  labelText: 'Editar Localização',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -69,7 +69,7 @@ class EditarEstoque extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('Situação do Estoque'),
+                  const Text('Situação do Estoque (Ativado/Desativado)'),
                   Switch(
                     value: isAtivado,
                     onChanged: (value) {

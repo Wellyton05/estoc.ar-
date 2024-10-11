@@ -9,6 +9,11 @@ class EditarProduto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final TextEditingController nomeController = TextEditingController();
+    final TextEditingController descricaoController = TextEditingController();
+    final TextEditingController custoController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(produto), // Usando o nome do produto no título
@@ -33,10 +38,72 @@ class EditarProduto extends StatelessWidget {
           ),
         ],
       ),
-      body: Center(
-        child: Text(
-          'Aqui você pode editar o $produto', // Exibe o nome do produto
-          style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Campo para descrição do produto (maior)
+              TextField(
+                controller: descricaoController,
+                maxLines: 5,
+                decoration: const InputDecoration(
+                  labelText: 'Editar Descrição',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              // Botão para editar imagem
+              ElevatedButton.icon(
+                onPressed: () {
+                  // Lógica para adicionar imagem seria implementada aqui
+                  print('Editar imagem');
+                },
+                icon: const Icon(Icons.image),
+                label: const Text('Editar Imagem'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 4, 57, 89),
+                  foregroundColor: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 16),
+
+              // Campo para editar custo do produto
+              TextField(
+                controller: custoController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(
+                  labelText: 'Editar Custo do Produto',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 32),
+
+              Center(
+                child: ElevatedButton(
+                  onPressed: () {
+
+                    print('Produto editado');
+                    Navigator.pop(context); // Retorna à tela anterior
+                  },
+                  child: const Text('Editar'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 4, 57, 89),
+                    foregroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 50,
+                      vertical: 15,
+                    ),
+                    textStyle: const TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
