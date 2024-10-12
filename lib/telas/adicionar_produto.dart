@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telas_app/telas/listar_produtos.dart';
 
 class AdicionarProduto extends StatelessWidget {
   const AdicionarProduto({super.key});
@@ -117,7 +118,12 @@ class AdicionarProduto extends StatelessWidget {
         ],
         onTap: (index) {
           if (index == 0) {
-            print('Botão de pesquisar clicado');
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ListarProdutos(),
+              ),
+            );
           } else if (index == 1) {
             Navigator.push(
               context,
