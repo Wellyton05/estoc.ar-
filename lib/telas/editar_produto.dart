@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
 import 'listar_produtos.dart';
 import 'adicionar_produto.dart';
+
 class EditarProduto extends StatelessWidget {
   final String produto;
 
-  // Adicione o parâmetro 'produto' ao construtor
   const EditarProduto({super.key, required this.produto});
 
   @override
   Widget build(BuildContext context) {
-
     final TextEditingController descricaoController = TextEditingController();
     final TextEditingController custoController = TextEditingController();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(produto), // Usando o nome do produto no título
+        title: Text(produto),
         titleTextStyle: TextStyle(
           color: Colors.white,
           fontSize: 20,
         ),
         iconTheme: IconThemeData(
-          color: Colors.white, // Define a cor do botão de voltar como branco
+          color: Colors.white,
         ),
         backgroundColor: Color.fromARGB(255, 4, 57, 89),
         centerTitle: true,
@@ -43,7 +42,6 @@ class EditarProduto extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Campo para descrição do produto (maior)
               TextField(
                 controller: descricaoController,
                 maxLines: 5,
@@ -53,11 +51,8 @@ class EditarProduto extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Botão para editar imagem
               ElevatedButton.icon(
                 onPressed: () {
-                  // Lógica para adicionar imagem seria implementada aqui
                   print('Editar imagem');
                 },
                 icon: const Icon(Icons.image),
@@ -68,8 +63,6 @@ class EditarProduto extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Campo para editar custo do produto
               TextField(
                 controller: custoController,
                 keyboardType: TextInputType.number,
@@ -79,13 +72,11 @@ class EditarProduto extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 32),
-
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-
                     print('Produto editado');
-                    Navigator.pop(context); // Retorna à tela anterior
+                    Navigator.pop(context);
                   },
                   child: const Text('Editar'),
                   style: ElevatedButton.styleFrom(
@@ -106,9 +97,8 @@ class EditarProduto extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor:
-            Colors.white, // Cor dos ícones selecionados em branco
-        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         backgroundColor: Color.fromARGB(255, 4, 57, 89),
         items: const [
           BottomNavigationBarItem(
@@ -125,14 +115,14 @@ class EditarProduto extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ListarProdutos(), // Tela de adicionar produto
+                builder: (context) => const ListarProdutos(),
               ),
             );
           } else if (index == 1) {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AdicionarProduto(), // Tela de adicionar produto
+                builder: (context) => const AdicionarProduto(),
               ),
             );
           }

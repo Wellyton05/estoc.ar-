@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'editar_produto.dart'; // Importa o arquivo de edição do produto
-import 'adicionar_produto.dart'; // Importa o arquivo de adicionar produto
+import 'editar_produto.dart';
+import 'adicionar_produto.dart';
 
 class ListarProdutos extends StatefulWidget {
   const ListarProdutos({super.key});
@@ -11,43 +11,22 @@ class ListarProdutos extends StatefulWidget {
 
 class _ListarProdutosState extends State<ListarProdutos> {
   final TextEditingController _searchController = TextEditingController();
-  
-  // Atualizando a lista para incluir imagem e custo de cada produto
+
   final List<Map<String, dynamic>> produtos = [
-    {
-      'nome': 'Produto 1',
-      'imagem': 'assets/images/perfume.png', 
-      'custo': 19.99
-    },
-    {
-      'nome': 'Produto 2',
-      'imagem': 'assets/images/perfume.png',
-      'custo': 29.99
-    },
-    {
-      'nome': 'Produto 3',
-      'imagem': 'assets/images/perfume.png',
-      'custo': 9.99
-    },
-    {
-      'nome': 'Produto 4',
-      'imagem': 'assets/images/perfume.png',
-      'custo': 39.99
-    },
-    {
-      'nome': 'Produto 5',
-      'imagem': 'assets/perfume.png',
-      'custo': 49.99
-    },
-  ]; // Lista de produtos com imagem e custo
-  
-  List<Map<String, dynamic>> produtosFiltrados = []; // Lista para os produtos filtrados
+    {'nome': 'Produto 1', 'imagem': 'images/perfume.png', 'custo': 19.99},
+    {'nome': 'Produto 2', 'imagem': 'images/perfume.png', 'custo': 29.99},
+    {'nome': 'Produto 3', 'imagem': 'images/perfume.png', 'custo': 9.99},
+    {'nome': 'Produto 4', 'imagem': 'images/perfume.png', 'custo': 39.99},
+    {'nome': 'Produto 5', 'imagem': 'images/perfume.png', 'custo': 49.99},
+  ];
+
+  List<Map<String, dynamic>> produtosFiltrados = [];
 
   @override
   void initState() {
     super.initState();
-    produtosFiltrados = produtos; // Inicia com todos os produtos
-    _searchController.addListener(_filterProdutos); // Filtra conforme digita
+    produtosFiltrados = produtos;
+    _searchController.addListener(_filterProdutos);
   }
 
   @override
@@ -76,7 +55,7 @@ class _ListarProdutosState extends State<ListarProdutos> {
           fontSize: 20,
         ),
         iconTheme: const IconThemeData(
-          color: Colors.white, // Define a cor do botão de voltar como branco
+          color: Colors.white,
         ),
         backgroundColor: const Color.fromARGB(255, 4, 57, 89),
         actions: [
@@ -95,13 +74,23 @@ class _ListarProdutosState extends State<ListarProdutos> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Pesquisar produto...',
-                prefixIcon: const Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Pesquisar produto',
+                  border: InputBorder.none,
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {
+                      print('Pesquisar');
+                    },
+                  ),
                 ),
               ),
             ),
@@ -114,17 +103,14 @@ class _ListarProdutosState extends State<ListarProdutos> {
                 return ListTile(
                   title: Text(produto['nome']),
                   subtitle: Text(
-                    'R\$ ${produto['custo'].toStringAsFixed(2)}', // Exibe o custo
-                    style: const TextStyle(fontSize: 14), // Texto menor
+                    'R\$ ${produto['custo'].toStringAsFixed(2)}',
+                    style: const TextStyle(fontSize: 14),
                   ),
                   leading: Image.asset(
-                    produto['imagem'], // Exibe a imagem do produto
-                    width: 50, // Defina o tamanho da imagem
-                    height: 50,
+                    produto['imagem'],
                     fit: BoxFit.cover,
                   ),
                   onTap: () {
-                    // Navegar para a tela de editar produto
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -141,9 +127,8 @@ class _ListarProdutosState extends State<ListarProdutos> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor:
-            Colors.white, // Cor dos ícones selecionados em branco
-        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         backgroundColor: const Color.fromARGB(255, 4, 57, 89),
         items: const [
           BottomNavigationBarItem(
@@ -160,15 +145,15 @@ class _ListarProdutosState extends State<ListarProdutos> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ListarProdutos(), // Tela de adicionar produto
+                builder: (context) => const ListarProdutos(),
               ),
             );
           } else if (index == 1) {
-            // Navegar para a tela de adicionar produto
+            //
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AdicionarProduto(), // Tela de adicionar produto
+                builder: (context) => const AdicionarProduto(),
               ),
             );
           }

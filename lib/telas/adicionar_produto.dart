@@ -5,7 +5,6 @@ class AdicionarProduto extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Controladores de texto para os campos (não implementam lógica)
     final TextEditingController nomeController = TextEditingController();
     final TextEditingController descricaoController = TextEditingController();
     final TextEditingController custoController = TextEditingController();
@@ -19,13 +18,13 @@ class AdicionarProduto extends StatelessWidget {
           fontSize: 20,
         ),
         iconTheme: const IconThemeData(
-          color: Colors.white, // Define a cor do botão de voltar como branco
+          color: Colors.white,
         ),
         actions: [
           IconButton(
             icon: const Icon(
               Icons.person,
-              color: Colors.white, // Cor do ícone corrigida
+              color: Colors.white,
             ),
             onPressed: () {
               print('Ícone de usuário clicado');
@@ -40,7 +39,6 @@ class AdicionarProduto extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Campo para nome do produto
               TextField(
                 controller: nomeController,
                 decoration: const InputDecoration(
@@ -49,8 +47,6 @@ class AdicionarProduto extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Campo para descrição do produto (maior)
               TextField(
                 controller: descricaoController,
                 maxLines: 5,
@@ -60,11 +56,8 @@ class AdicionarProduto extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Botão para adicionar imagem
               ElevatedButton.icon(
                 onPressed: () {
-                  // Lógica para adicionar imagem seria implementada aqui
                   print('Adicionar imagem');
                 },
                 icon: const Icon(Icons.image),
@@ -75,8 +68,6 @@ class AdicionarProduto extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Campo para o custo do produto
               TextField(
                 controller: custoController,
                 keyboardType: TextInputType.number,
@@ -86,14 +77,11 @@ class AdicionarProduto extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 32),
-
-              // Botão para registrar (somente layout, sem lógica)
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Simulação de navegação ou ação ao clicar no botão
                     print('Produto registrado');
-                    Navigator.pop(context); // Retorna à tela anterior
+                    Navigator.pop(context);
                   },
                   child: const Text('Registrar Produto'),
                   style: ElevatedButton.styleFrom(
@@ -114,8 +102,8 @@ class AdicionarProduto extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.white, // Cor dos ícones selecionados em branco
-        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         backgroundColor: const Color.fromARGB(255, 4, 57, 89),
         items: const [
           BottomNavigationBarItem(
@@ -131,11 +119,10 @@ class AdicionarProduto extends StatelessWidget {
           if (index == 0) {
             print('Botão de pesquisar clicado');
           } else if (index == 1) {
-            // Navegar para a tela de adicionar produto
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AdicionarProduto(), // Tela de adicionar produto
+                builder: (context) => const AdicionarProduto(),
               ),
             );
           }

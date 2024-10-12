@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:telas_app/telas/listar_estoques.dart';
 import 'package:telas_app/telas/listar_produtos.dart';
 import 'package:telas_app/telas/movimentacao.dart';
+import 'package:telas_app/telas/realizar_movimentacao.dart';
 import 'package:telas_app/util/util.dart';
 
 class Home extends StatelessWidget {
@@ -28,22 +29,21 @@ class Home extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: GridView.count(
-          crossAxisCount: 2, // 2 colunas
-          crossAxisSpacing: 12, // Espaçamento horizontal
-          mainAxisSpacing: 12, // Espaçamento vertical
+          crossAxisCount: 2,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 12,
           children: [
-            _buildSquareButton('CADASTRO PRODUTO', () {
+            _ConstruirCard('Produtos', () {
               Util.NavegarDireitaPara(context, const ListarProdutos());
             }),
-            _buildSquareButton('CADASTRO ESTOQUE', () {
-              //Navigator.pushNamed(context, '/estoque'); 
+            _ConstruirCard('Estoques', () {
               Util.NavegarDireitaPara(context, const ListarEstoques());
             }),
-            _buildSquareButton('REALIZAR MOVIMENTAÇÃO', () {
-              Util.NavegarDireitaPara(context, const Movimentacao());
+            _ConstruirCard('Realizar Movimentação', () {
+              Util.NavegarDireitaPara(context, const RealizarMovimentacao());
             }),
-            _buildSquareButton('CONSULTAR MOVIMENTAÇÃO', () {
-              print('Botão 4 clicado');
+            _ConstruirCard('Consultar Movimentação', () {
+              Util.NavegarDireitaPara(context, const Movimentacao());
             }),
           ],
         ),
@@ -51,42 +51,45 @@ class Home extends StatelessWidget {
     );
   }
 
-Route _createRoute(Widget Page) {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Page, // Substitua `NextPage` pela tela de destino
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(1.0, 0.0); // Início da animação (vindo da direita)
-      const end = Offset.zero; // Fim da animação (posição final)
-      const curve = Curves.easeInOut;
+  Route _createRoute(Widget Page) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => Page,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(1.0, 0.0);
+        const end = Offset.zero;
+        const curve = Curves.easeInOut;
 
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-      var offsetAnimation = animation.drive(tween);
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var offsetAnimation = animation.drive(tween);
 
-      return SlideTransition(
-        position: offsetAnimation,
-        child: child,
-      );
-    },
-  );
-}
+        return SlideTransition(
+          position: offsetAnimation,
+          child: child,
+        );
+      },
+    );
+  }
 
-  Widget _buildSquareButton(String text, VoidCallback onPressed) {
+  Widget _ConstruirCard(String text, VoidCallback onPressed) {
     return Container(
-      width: 80, // Largura do botão
-      height: 80, // Altura do botão para torná-lo quadrado
+      width: 80,
+      height: 80,
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color.fromARGB(255, 4, 57, 89), // Fundo azul
+          backgroundColor: const Color.fromARGB(255, 4, 57, 89),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0), // Remove a curvatura do botão
+            borderRadius: BorderRadius.circular(15.0),
           ),
-          padding: EdgeInsets.zero, // Remove o padding padrão do botão
+          padding: EdgeInsets.zero,
         ),
         child: Text(
           text,
+          textAlign: TextAlign.center,
           style: const TextStyle(
-            color: Colors.white, // Cor do texto
+            color: Colors.white,
+            fontSize: 28,
           ),
         ),
       ),

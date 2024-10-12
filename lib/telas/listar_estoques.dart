@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'adicionar_estoque.dart';
-import 'editar_estoque.dart'; // Importa o arquivo de edição do estoque
+import 'editar_estoque.dart';
 
 class ListarEstoques extends StatefulWidget {
   const ListarEstoques({super.key});
@@ -17,14 +17,14 @@ class _ListarEstoquesState extends State<ListarEstoques> {
     'Estoque 3',
     'Estoque 4',
     'Estoque 5'
-  ]; // Lista de estoques
-  List<String> estoquesFiltrados = []; // Lista para os estoques filtrados
+  ];
+  List<String> estoquesFiltrados = [];
 
   @override
   void initState() {
     super.initState();
-    estoquesFiltrados = estoques; // Inicia com todos os estoques
-    _searchController.addListener(_filterestoques); // Filtra conforme digita
+    estoquesFiltrados = estoques;
+    _searchController.addListener(_filterestoques);
   }
 
   @override
@@ -46,19 +46,19 @@ class _ListarEstoquesState extends State<ListarEstoques> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Estoque'),
+        title: const Text('Estoque'),
         centerTitle: true,
-        titleTextStyle: TextStyle(
+        titleTextStyle: const TextStyle(
           color: Colors.white,
           fontSize: 20,
         ),
-        iconTheme: IconThemeData(
-          color: Colors.white, // Define a cor do botão de voltar como branco
+        iconTheme: const IconThemeData(
+          color: Colors.white,
         ),
         backgroundColor: Color.fromARGB(255, 4, 57, 89),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.person,
               color: Color.fromARGB(255, 255, 255, 255),
             ),
@@ -72,13 +72,23 @@ class _ListarEstoquesState extends State<ListarEstoques> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Pesquisar estoque...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[300],
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Pesquisar produto',
+                  border: InputBorder.none,
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: () {
+                      print('Pesquisar');
+                    },
+                  ),
                 ),
               ),
             ),
@@ -90,7 +100,6 @@ class _ListarEstoquesState extends State<ListarEstoques> {
                 return ListTile(
                   title: Text(estoquesFiltrados[index]),
                   onTap: () {
-                    //Navegar para a tela de editar estoque
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -107,9 +116,8 @@ class _ListarEstoquesState extends State<ListarEstoques> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor:
-            Colors.white, // Cor dos ícones selecionados em branco
-        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         backgroundColor: Color.fromARGB(255, 4, 57, 89),
         items: const [
           BottomNavigationBarItem(
@@ -126,16 +134,14 @@ class _ListarEstoquesState extends State<ListarEstoques> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    const ListarEstoques(), // Tela de adicionar produto
+                builder: (context) => const ListarEstoques(),
               ),
             );
           } else if (index == 1) {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    const AdicionarEstoque(), // Tela de adicionar produto
+                builder: (context) => const AdicionarEstoque(),
               ),
             );
           }

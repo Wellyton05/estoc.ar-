@@ -6,7 +6,6 @@ class AdicionarEstoque extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Controladores de texto para os campos (não implementam lógica)
     final TextEditingController nomeController = TextEditingController();
     final TextEditingController descricaoController = TextEditingController();
 
@@ -19,13 +18,13 @@ class AdicionarEstoque extends StatelessWidget {
           fontSize: 20,
         ),
         iconTheme: const IconThemeData(
-          color: Colors.white, // Define a cor do botão de voltar como branco
+          color: Colors.white,
         ),
         actions: [
           IconButton(
             icon: const Icon(
               Icons.person,
-              color: Colors.white, // Cor do ícone corrigida
+              color: Colors.white,
             ),
             onPressed: () {
               print('Ícone de usuário clicado');
@@ -40,7 +39,6 @@ class AdicionarEstoque extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Campo para nome do produto
               TextField(
                 controller: nomeController,
                 decoration: const InputDecoration(
@@ -49,7 +47,6 @@ class AdicionarEstoque extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
               TextField(
                 controller: descricaoController,
                 maxLines: 5,
@@ -59,7 +56,6 @@ class AdicionarEstoque extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
               TextField(
                 controller: descricaoController,
                 maxLines: 3,
@@ -69,13 +65,11 @@ class AdicionarEstoque extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Simulação de navegação ou ação ao clicar no botão
                     print('Produto registrado');
-                    Navigator.pop(context); // Retorna à tela anterior
+                    Navigator.pop(context);
                   },
                   child: const Text('Registrar Estoque'),
                   style: ElevatedButton.styleFrom(
@@ -95,10 +89,9 @@ class AdicionarEstoque extends StatelessWidget {
           ),
         ),
       ),
-
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.white, // Cor dos ícones selecionados em branco
-        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         backgroundColor: const Color.fromARGB(255, 4, 57, 89),
         items: const [
           BottomNavigationBarItem(
@@ -112,19 +105,17 @@ class AdicionarEstoque extends StatelessWidget {
         ],
         onTap: (index) {
           if (index == 0) {
-             Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) =>
-                    const ListarEstoques(), 
-              ),
-            );
-          } else if (index == 1) {
-            // Navegar para a tela de adicionar produto
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AdicionarEstoque(), // Tela de adicionar produto
+                builder: (context) => const ListarEstoques(),
+              ),
+            );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AdicionarEstoque(),
               ),
             );
           }

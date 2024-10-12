@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:telas_app/telas/login.dart'; // Importe a nova tela
+import 'package:telas_app/telas/login.dart';
 
 void main() {
   runApp(const MyApp());

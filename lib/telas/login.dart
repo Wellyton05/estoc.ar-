@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:projeto1/telas/home.dart';
 import 'package:telas_app/telas/home.dart';
-
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -20,7 +18,7 @@ class Login extends StatelessWidget {
                 "../assets/images/logo_bambu.png",
                 width: 406,
                 fit: BoxFit.cover,
-              ), // -------------------------------------------logo
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -42,7 +40,6 @@ class Login extends StatelessWidget {
               height: 10,
             ),
             TextFormField(
-              // autofocus: true,
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: const InputDecoration(
@@ -83,7 +80,6 @@ class Login extends StatelessWidget {
                       ),
                       Container(
                         child: const SizedBox(
-                          //child: Image.asset("assets/bone.png"),
                           height: 28,
                           width: 28,
                         ),
@@ -115,7 +111,7 @@ class Login extends StatelessWidget {
                   //Navigator.push(
                   // context,
                   // MaterialPageRoute(
-                  //   builder: (context) => SignupPage(),
+                  //   builder: (context) => CadastroUsuario(),
                   // ),
                   //);
                 },

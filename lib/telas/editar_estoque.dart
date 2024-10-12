@@ -3,16 +3,15 @@ import 'adicionar_estoque.dart';
 import 'listar_estoques.dart';
 
 class EditarEstoque extends StatelessWidget {
-   final String estoque;
+  final String estoque;
 
   const EditarEstoque({super.key, required this.estoque});
 
   @override
   Widget build(BuildContext context) {
-    // Controladores de texto para os campos
     final TextEditingController descricaoController = TextEditingController();
     final TextEditingController localizacaoController = TextEditingController();
-    bool isAtivado = true; // Variável para controlar a situação do estoque
+    bool isAtivado = true;
 
     return Scaffold(
       appBar: AppBar(
@@ -23,13 +22,13 @@ class EditarEstoque extends StatelessWidget {
           fontSize: 20,
         ),
         iconTheme: const IconThemeData(
-          color: Colors.white, // Define a cor do botão de voltar como branco
+          color: Colors.white,
         ),
         actions: [
           IconButton(
             icon: const Icon(
               Icons.person,
-              color: Colors.white, // Cor do ícone corrigida
+              color: Colors.white,
             ),
             onPressed: () {
               print('Ícone de usuário clicado');
@@ -44,7 +43,6 @@ class EditarEstoque extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Campo para descrição do estoque
               TextField(
                 controller: descricaoController,
                 maxLines: 5,
@@ -54,8 +52,6 @@ class EditarEstoque extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Campo para localização do estoque
               TextField(
                 controller: localizacaoController,
                 decoration: const InputDecoration(
@@ -64,8 +60,6 @@ class EditarEstoque extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 16),
-
-              // Campo para situação do estoque (Ativado/Desativado)
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -73,22 +67,19 @@ class EditarEstoque extends StatelessWidget {
                   Switch(
                     value: isAtivado,
                     onChanged: (value) {
-                      // Atualiza a situação do estoque
                       isAtivado = value;
-                      print(isAtivado ? 'Estoque ativado' : 'Estoque desativado');
+                      print(
+                          isAtivado ? 'Estoque ativado' : 'Estoque desativado');
                     },
                   ),
                 ],
               ),
               const SizedBox(height: 32),
-
-              // Botão para editar (somente layout, sem lógica)
               Center(
                 child: ElevatedButton(
                   onPressed: () {
-                    // Simulação de navegação ou ação ao clicar no botão
                     print('Estoque editado');
-                    Navigator.pop(context); // Retorna à tela anterior
+                    Navigator.pop(context);
                   },
                   child: const Text('Editar'),
                   style: ElevatedButton.styleFrom(
@@ -109,8 +100,8 @@ class EditarEstoque extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.white, // Cor dos ícones selecionados em branco
-        unselectedItemColor: Colors.white70, // Cor dos ícones não selecionados
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white70,
         backgroundColor: const Color.fromARGB(255, 4, 57, 89),
         items: const [
           BottomNavigationBarItem(
@@ -127,16 +118,14 @@ class EditarEstoque extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) =>
-                    const ListarEstoques(), // Tela de adicionar produto
+                builder: (context) => const ListarEstoques(),
               ),
             );
           } else if (index == 1) {
-            // Navegar para a tela de adicionar estoque
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const AdicionarEstoque(), // Tela de adicionar estoque
+                builder: (context) => const AdicionarEstoque(),
               ),
             );
           }
